@@ -26,7 +26,6 @@ public class Etape {
 	@Column(nullable=false)
 	private String resume;
 	
-	@Column(nullable=true)
 	private String description;
 	
 
