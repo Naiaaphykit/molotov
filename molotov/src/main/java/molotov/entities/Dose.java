@@ -1,10 +1,14 @@
 package molotov.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -20,12 +24,13 @@ public class Dose {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
-	@Column(nullable=false)
+	@OneToOne(optional=false, cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	private Ingredient ingredient;
 	
 	@Column(nullable=false)
 	private double quantite;
 	
+	@Enumerated(EnumType.STRING)
 	@Column(nullable=false)
 	private Unite unite;
 	
